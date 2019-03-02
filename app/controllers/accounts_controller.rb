@@ -13,10 +13,13 @@ class AccountsController < ApplicationController
   def create
     build_account_form(account_form_params)
 
-    return unless @account_form.save
-    sign_in(User.find_by(name: @account_form.user_name))
-
-    redirect_to account_path, notice: 'Account was created'
+    if @account_form.save
+      sign_in(User.find_by(name: @account_form.user_name))
+      redirect_to account_path, notice: 'Account was created'
+    else
+      error_message = @account_form.errors.full_messages.join(',')
+      redirect_to new_account_path, notice: error_message
+    end
   end
 
   def show; end

@@ -8,6 +8,8 @@ class AccountForm
 
   attr_accessor :user_name, :user_phone_number, :account_type, :account_number
 
+  validates :user_name, presence: true
+
   def self.setup_by(current_user)
     params = {}
     params[:user_name] = current_user.name
@@ -18,6 +20,8 @@ class AccountForm
   end
 
   def save
+    return unless valid?
+
     user = User.create!(name: user_name, phone_number: user_phone_number)
     User::Account.create!(
       user: user,
