@@ -35,3 +35,16 @@ Oke, kita sekarang merancang routes-nya.
 
 Untuk lebih jelasnya anda bisa melihat file testingnya yang terdapat di folder `/spec`.
 
+
+## Instalasi
+### Stack
+- Ruby 2.5.3p105 (2018-10-18 revision 65156) [x86_64-linux]
+- Rails 5.2.2
+- SQLite 1.3.6
+
+### Flow
+```
+$> bundle
+$> rspec
+$> rails s -p 3000
+

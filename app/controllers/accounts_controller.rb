@@ -14,9 +14,9 @@ class AccountsController < ApplicationController
     build_account_form(account_form_params)
 
     return unless @account_form.save
+    sign_in(User.find_by(name: @account_form.user_name))
 
     redirect_to account_path, notice: 'Account was created'
-    sign_in(User.find_by(name: @account_form.user_name))
   end
 
   def show; end
