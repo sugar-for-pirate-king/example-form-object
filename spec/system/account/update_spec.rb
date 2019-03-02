@@ -10,6 +10,15 @@ RSpec.describe 'Update Account' do
     # Create BRI Bank
     let!(:bank) { create(:bank, name: 'BRI') }
 
+    let(:valid_params) do
+      {
+        user_name: 'Pquest updated',
+        user_phone_number: '99999121212',
+        account_type: 'BRI',
+        account_number: '1122221111'
+      }
+    end
+
     it 'is updated the account' do
       page.set_rack_session(user_id: user.id)
 
@@ -17,12 +26,7 @@ RSpec.describe 'Update Account' do
 
       click_link 'Edit'
 
-      fill_in :account_form_user_name, with: 'Pquest updated'
-      fill_in :account_form_user_phone_number, with: '99999121212'
-      select 'BRI', from: :account_form_account_type
-      fill_in :account_form_account_number, with: '1122221111'
-
-      click_button 'Submit'
+      submit_account_form_with(valid_params)
 
       expect(page).to have_content 'Account was updated'
 
