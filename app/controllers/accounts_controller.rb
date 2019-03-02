@@ -4,12 +4,14 @@
 # CRUD Account User
 #
 class AccountsController < ApplicationController
+  before_action :account_form_setup, only: %i[edit update]
+
   def new
-    @account_form = AccountForm.new
+    build_account_form
   end
 
   def create
-    @account_form = AccountForm.new(account_form_params)
+    build_account_form(account_form_params)
 
     return unless @account_form.save
 
@@ -19,12 +21,9 @@ class AccountsController < ApplicationController
 
   def show; end
 
-  def edit
-    @account_form = AccountForm.setup_by(current_user)
-  end
+  def edit; end
 
   def update
-    @account_form = AccountForm.setup_by(current_user)
     return unless @account_form.update(account_form_params)
 
     redirect_to account_path, notice: 'Account was updated'
@@ -39,5 +38,13 @@ class AccountsController < ApplicationController
       :account_type,
       :account_number
     )
+  end
+
+  def build_account_form(params = {})
+    @account_form = AccountForm.new(params)
+  end
+
+  def account_form_setup
+    @account_form = AccountForm.setup_by(current_user)
   end
 end
