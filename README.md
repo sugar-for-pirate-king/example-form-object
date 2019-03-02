@@ -21,11 +21,11 @@ Saya juga ingin membuat fitur edit form, agar kita bisa yakin bahwa form object 
 
 Oke, kita sekarang merancang routes-nya.
 
-- `/account/new
+- `/account/new`
 
   Pada halaman ini kita akan menampilkan form yang sudah kita rancang sebelumnya. Jika user telah mengisi form dengan sukses user akan diberikan otentikasi dan di-*redirect* ke halaman `/account`.
 
-- `/account (root)
+- `/account` (root)
 
   Halaman ini hanya bisa diakses oleh user yang sudah mengisi form pada halaman `/account/new`, jika belum maka sistem akan me-*redirect* user ke halaman tersebut. Namun, jika user sudah mengisinya maka akan menampilkan informasi hasil dari form yang telah diisi sebelumnya.
 

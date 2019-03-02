@@ -1,0 +1,15 @@
+<%= form_with model: account_form, url: request_url, method: request_method, local: true do |f| %>
+  <%= f.label 'Name' %>
+  <%= f.text_field :user_name %>
+
+  <%= f.label 'Phone Number' %>
+  <%= f.text_field :user_phone_number %>
+
+  <%= f.label 'Bank Type' %>
+  <%= f.select :account_type, Bank.all.pluck(:name, :id) %>
+
+  <%= f.label 'Bank Number' %>
+  <%= f.text_field :account_number %>
+
+  <%= f.submit 'Submit' %>
+<% end %>

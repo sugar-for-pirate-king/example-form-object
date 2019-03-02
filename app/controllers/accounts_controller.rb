@@ -19,6 +19,17 @@ class AccountsController < ApplicationController
 
   def show; end
 
+  def edit
+    @account_form = AccountForm.setup_by(current_user)
+  end
+
+  def update
+    @account_form = AccountForm.setup_by(current_user)
+    return unless @account_form.update(account_form_params)
+
+    redirect_to account_path, notice: 'Account was updated'
+  end
+
   private
 
   def account_form_params
