@@ -17,8 +17,21 @@ Bank Number     : account.number
 ```
 Khusus untuk bank type saya membuat `select_form` yang artinya user tinggal memilih type bank yang sudah didaftarkan sebelumnya.
 
-Saya juga ingin membuat fitur edit form, agar kita bisa yakin bahwa form object bisa menggantikan object model secara utuh :smiley:.
+Saya juga ingin membuat fitur edit form, agar kita bisa yakin bahwa form object bisa menggantikan object model secara utuh :smiley:
 
 Oke, kita sekarang merancang routes-nya.
 
+- `/account/new
+
+  Pada halaman ini kita akan menampilkan form yang sudah kita rancang sebelumnya. Jika user telah mengisi form dengan sukses user akan diberikan otentikasi dan di-*redirect* ke halaman `/account`.
+
+- `/account (root)
+
+  Halaman ini hanya bisa diakses oleh user yang sudah mengisi form pada halaman `/account/new`, jika belum maka sistem akan me-*redirect* user ke halaman tersebut. Namun, jika user sudah mengisinya maka akan menampilkan informasi hasil dari form yang telah diisi sebelumnya.
+
+- `/account/edit`
+
+  Halaman ini digunakan user jika ingin memperbaharui formnya.
+
+Untuk lebih jelasnya anda bisa melihat file testingnya yang terdapat di folder `/spec`.
 
